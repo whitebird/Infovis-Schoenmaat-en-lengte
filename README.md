@@ -1,4 +1,4 @@
 # Infovis-Schoenmaat-en-lengte
-Source based on http://bl.ocks.org/mbostock/4061502
+Source based on https://bl.ocks.org/weiglemc/6185069
 
 [View page](http://whitebird.github.io/Infovis-Schoenmaat-en-lengte/)
