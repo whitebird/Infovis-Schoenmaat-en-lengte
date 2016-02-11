@@ -10,6 +10,7 @@ var xValue = function(d) { return d.lengte;}, // data -> value
 	xMap = function(d) { return xScale(xValue(d));}, // data -> display
 	xAxis = d3.svg.axis().scale(xScale).orient("bottom");
 
+
 // setup y
 var yValue = function(d) { return d.schoenmaat;}, // data -> value
 		yScale = d3.scale.linear().range([height, 0]), // value -> display
@@ -94,4 +95,19 @@ d3.csv("data.csv", function(error, data) {
 				.duration(200)
 				.style("opacity", 0);
 		});
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+
+  svg.append("path")
+      .data([dataset])
+      .attr("class", "line")
+      .attr("d", line);
+
 });

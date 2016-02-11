@@ -32,11 +32,21 @@
 	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
 </head>
 <body>
-	<div class='content'>
-		<!-- /the chart goes here -->
+	<div class='container'>
+		<div><h1>Schoenmaat en lengte</h1>door Sebastiaan Jansen (Game of Simplicity)</div>
+		<div class='content'></div>
+		<div class='row'>
+			<div class='col-md-3'>
+				<h2>Links</h2>
+				<ul>
+					<li><a href="https://bl.ocks.org/weiglemc/6185069">Based on D3 Scatterplot Example by Michele Weigle</a></li>
+					<li><a href="http://stackoverflow.com/questions/27012389/d3-table-appending-below-each-other-instead-of-inside-div">CSV to table on StackOverflow</a></li>
+					<li><a href="https://github.com/whitebird/Infovis-Schoenmaat-en-lengte/tree/gh-pages">Source code (GitHub)</a></li>
+			</div>
+			<div id='data' class='col-md-offset-3 col-md-4'></div>
+		</div>
 	</div>
-	<div id="data" class="container">
-	</div>
+	
 	<script type="text/javascript" src="scatterchart.js"></script>
     <script type="text/javascript"charset="utf-8">
 		// based on http://jsfiddle.net/7WQjr/
@@ -75,14 +85,6 @@
 			return table;
 		}
 
-		// create some people
-		var people = [
-			{name: "Jill", age: 30},
-			{name: "Bob", age: 32},
-			{name: "George", age: 29},
-			{name: "Sally", age: 31}
-		];
-
 		// render the table
 		d3.csv("data.csv", function(error, data) {
 			peopleTable = tabulate(data, ["lengte", "schoenmaat", "geslacht"]);
@@ -93,7 +95,6 @@
 				});
 
 		});
-
 
     </script>
 </body>
