@@ -1,4 +1,4 @@
-Schoenmaat,lengte,Geslacht
+schoenmaat,lengte,geslacht
 43,180,M
 39,173,V
 40,170,V
@@ -12,7 +12,6 @@ Schoenmaat,lengte,Geslacht
 48,196,M
 44,185,M
 47,194,M
-,,M
 42,174,M
 41,173,M
 42,176,M
