@@ -17,8 +17,9 @@ var yValue = function(d) { return d.schoenmaat;}, // data -> value
 		yAxis = d3.svg.axis().scale(yScale).orient("left");
 
 // setup fill color
-var cValue = function(d) { return d.Manufacturer;},
-		color = d3.scale.category10();
+var cValue = function(d) { return d.geslacht;},
+		color = d3.scale.ordinal()
+		.range(["#0099ff", "#ff66ff"]);
 
 // add the graph canvas to the body of the webpage
 var svg = d3.select(".content").append("svg")

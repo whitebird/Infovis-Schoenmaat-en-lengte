@@ -2,8 +2,9 @@
 <html>
 <head>
 	<title>Infovis - Schoenmaat en lengte</title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<style>
-	body {
+	.label {
 	  font: 11px sans-serif;
 	}
 
@@ -34,9 +35,66 @@
 	<div class='content'>
 		<!-- /the chart goes here -->
 	</div>
-	<div>
-		Info	
+	<div id="data" class="container">
 	</div>
 	<script type="text/javascript" src="scatterchart.js"></script>
+    <script type="text/javascript"charset="utf-8">
+		// based on http://jsfiddle.net/7WQjr/
+		function tabulate(data, columns) {
+			var table = d3.select("#data")
+					.append("table")
+					.attr("class", "table table-hover"),
+				thead = table.append("thead"),
+				tbody = table.append("tbody");
+
+			// append the header row
+			thead.append("tr")
+				.selectAll("th")
+				.data(columns)
+				.enter()
+				.append("th")
+				    .text(function(column) { return column; });
+
+			// create a row for each object in the data
+			var rows = tbody.selectAll("tr")
+				.data(data)
+				.enter()
+				.append("tr");
+
+			// create a cell in each row for each column
+			var cells = rows.selectAll("td")
+				.data(function(row) {
+				    return columns.map(function(column) {
+				        return {column: column, value: row[column]};
+				    });
+				})
+				.enter()
+				.append("td")
+				    .text(function(d) { return d.value; });
+		
+			return table;
+		}
+
+		// create some people
+		var people = [
+			{name: "Jill", age: 30},
+			{name: "Bob", age: 32},
+			{name: "George", age: 29},
+			{name: "Sally", age: 31}
+		];
+
+		// render the table
+		d3.csv("data.csv", function(error, data) {
+			peopleTable = tabulate(data, ["lengte", "schoenmaat", "geslacht"]);
+			// uppercase the column headers
+			peopleTable.selectAll("thead th")
+				.text(function(column) {
+					return column.charAt(0).toUpperCase() + column.substr(1);
+				});
+
+		});
+
+
+    </script>
 </body>
 </html>
